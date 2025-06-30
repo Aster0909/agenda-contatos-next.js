@@ -6,6 +6,12 @@ import { v4 as uuidv4 } from 'uuid';
 const filePath = path.join(process.cwd(), 'data', 'contatos.json');
 
 
+export type Contato = {
+  id: string;
+  nome: string;
+  telefone: string;
+};
+
 // Lê contatos do arquivo JSON
 export function getContatos(){
     const data = fs.readFileSync(filePath, 'utf-8');
