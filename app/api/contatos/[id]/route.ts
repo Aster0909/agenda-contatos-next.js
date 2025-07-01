@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getContatos, atualizarContato, removerContato } from '../../../lib/contatos';
-import type { Contato } from '../../../lib/contatos';
+import type { Contato,  } from '../../../lib/contatos';
 
 
 // Função auxiliar para extrair ID da URL
@@ -35,8 +35,13 @@ export async function PUT(req: NextRequest) {
 // Remover contato por ID
 export async function DELETE(req: NextRequest) {
   const id = extrairId(req);
-  removerContato(id);
 
-  return NextResponse.json({ message: 'Contato removido com sucesso' });
+  try {
+    removerContato(id);
+    return NextResponse.json({ mensagem: 'Contato removido com sucesso' });
+  } catch (error) {
+    return NextResponse.json({ erro: 'Erro ao remover contato' }, { status: 500 });
+  }
 }
+
 
