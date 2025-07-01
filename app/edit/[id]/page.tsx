@@ -12,13 +12,14 @@ interface Contato {
 
 export default function EditarContato() {
   const router = useRouter();
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const [form, setForm] = useState<Contato>({
     id: '',
     nome: '',
     email: '',
     telefone: '',
   });
+
 
   // Carrega os dados do contato atual
   useEffect(() => {
@@ -58,7 +59,7 @@ export default function EditarContato() {
 };
 
   return (
-    <main className="flex flex-col items-center p-8 min-h-screen bg-black text-white">
+    <main className="flex flex-col items-center p-8 min-h-screen bg-black text-white bg-white w-[600px] p-6 rounded-xl shadow-lg">
       <h1 className="text-3xl font-bold mb-4">Editar Contato</h1>
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg w-[500px] flex flex-col items-center space-y-6 mt-8 mx-auto">
         <input

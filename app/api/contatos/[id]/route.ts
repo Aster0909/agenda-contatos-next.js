@@ -33,8 +33,11 @@ export async function PUT(req: NextRequest) {
 }
 
 // Remover contato por ID
-export async function DELETE(req: NextRequest) {
-  const id = extrairId(req);
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const { id } = params;
 
   try {
     removerContato(id);
@@ -43,5 +46,6 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ erro: 'Erro ao remover contato' }, { status: 500 });
   }
 }
+
 
 

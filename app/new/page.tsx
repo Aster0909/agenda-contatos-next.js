@@ -21,6 +21,7 @@ export default function Home() {
     });
     setForm({ nome: '', email: '', telefone: '' });
     alert('Contato salvo com sucesso!');
+    router.push('/');
   };
 
   return (
